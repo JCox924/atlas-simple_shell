@@ -1,0 +1,42 @@
+.TH simple_shell 1 "2024-03-24" "version 1.0" "User Commands"
+.SH NAME
+simple_shell \- simple UNIX command interpreter.
+.SH SYNOPSIS
+.B simple_shell
+.SH DESCRIPTION
+.B simple_shell
+is a simple UNIX command line interpreter that reads commands from the user and executes them. It is designed to illustrate basic concepts of shell implementation, including reading user input, parsing commands, and executing programs.
+.PP
+This shell supports:
+.IP \[bu] 2
+Executing commands without arguments.
+.IP \[bu] 2
+Basic error handling, including command not found.
+.IP \[bu] 2
+Handling the EOF condition gracefully with Ctrl+D.
+.SH USAGE
+To start
+.B simple_shell,
+simply type
+.B "./simple_shell"
+in your terminal. Once started, the shell will display a prompt (\$) and wait for you to type a command. The command line always ends with a new line. The prompt is displayed again each time a command has been executed.
+.PP
+To exit the shell, type
+.BR Ctrl+D
+to trigger the EOF condition.
+.SH "EXAMPLES"
+To list files in the current directory:
+.PP
+\$ /bin/ls
+.PP
+To exit the shell:
+.PP
+\$ Ctrl+D
+.SH AUTHORS
+Written by Joshua Cox and Jenna Jones.
+.SH "SEE ALSO"
+.BR bash (1),
+.BR sh (1),
+.BR zsh (1),
+.BR fish (1).
+
