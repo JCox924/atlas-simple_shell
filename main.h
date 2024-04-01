@@ -11,6 +11,6 @@
 #define PROMPT "> "
 #define DELIMITERS " \n"
 char* read_line(void);
-char** split_line(char *line);
+char** split_line(char *line, const char *delimiters);
 
 #endif

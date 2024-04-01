@@ -9,8 +9,7 @@
 int main(void)
 {
 	char *cmd;
-	char *newline;
-	char *argv[2];
+	char **args;
 	int status;
 	pid_t pid;
 	extern char **environ;
@@ -25,48 +24,35 @@ int main(void)
 		}
 		cmd = read_line();
 
-		if (!fgets(cmd, MAX_INPUT, stdin))
+		if (cmd == NULL || feof(stdin))
 		{
-			if (feof(stdin))
+			if (is_interactive)
 			{
 				printf("\n");
-				exit(EXIT_SUCCESS);
 			}
-			else
-			{
-				perror("fgets");
-				continue;
-			}
+			exit(cmd == NULL ? EXIT_FAILURE : EXIT_SUCCESS);
 		}
-		newline = strchr(cmd, '\n');
-		
-		if (newline)
-		{
-			*newline = '\0';
-		}
-		if (strlen(cmd) == 0)
-		{
-			continue;
-		}
-		argv[0] = cmd;
-		argv[1] = NULL;
+		args = split_line(cmd);
 		pid = fork();
 
-		if (pid == -1)
+		if (pid == 0)
 		{
-			perror("fork");
-			continue;
+			if (execve(args[0], args, environ) == -1)
+			{
+				perror("execve");
+				exit(EXIT_FAILURE);
+			}
 		}
 		else if (pid > 0)
 		{
 			waitpid(pid, &status, 0);
-
-			if (execve(cmd, argv, environ) == -1)
-			{
-				fprintf(stderr, "%s: Command not found\n", cmd);
-				exit(EXIT_FAILURE);
-			}
 		}
-		return (EXIT_SUCCESS);
+		else
+		{
+			perror("fork");
+		}
+		free(cmd);
+		free(args);
 	}
+	return (EXIT_SUCCESS);
 }
