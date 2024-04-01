@@ -8,7 +8,7 @@
 *Return:
 */
 
-char** split_line(char *line, const char *delimiters)
+char** split_line(char *line)
 {
 	int buffer = 64, pos = 0;
 	char **tokens = malloc(buffer * sizeof(char*));
