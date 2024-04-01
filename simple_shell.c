@@ -8,16 +8,22 @@
 
 int main(void)
 {
-	char cmd[MAX_INPUT];
+	char *cmd;
 	char *newline;
-	char *argc[2];
+	char *argv[2];
 	int status;
 	pid_t pid;
+	extern char **environ;
+	int is_interactive = isatty(STDIN_FILENO);
 
 	while (1)
 	{
-		printf(PROMPT);
-		fflush(stdout);
+		if (is_interactive)
+		{
+			printf(PROMPT);
+			fflush(stdout);
+		}
+		cmd = read_line();
 
 		if (!fgets(cmd, MAX_INPUT, stdin))
 		{
@@ -51,16 +57,14 @@ int main(void)
 			perror("fork");
 			continue;
 		}
-		else if (pid == 0)
+		else if (pid > 0)
 		{
-			if (execve(cmd, argv, NULL) == -1)
+			waitpid(pid, &status, 0);
+
+			if (execve(cmd, argv, environ) == -1)
 			{
-				fprintf(stderr, "%s: Command nor found\n", cmd);
+				fprintf(stderr, "%s: Command not found\n", cmd);
 				exit(EXIT_FAILURE);
-			}
-			else
-			{
-				waitpid(pid, &status, 0);
 			}
 		}
 		return (EXIT_SUCCESS);
