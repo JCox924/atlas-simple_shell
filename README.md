@@ -1,6 +1,6 @@
 # simple_shell
 
-## Repository Description
+## Description
 
 This repository contains files to simulate simple shell implementation with a program written in C language. It serves as a basic interactive shell that continuously reads commands from the user, executes them, and waits for their completion. It is made to carry out specific funtionality based on the C - Simple Shell project at [Atlas School](https://www.atlasschool.com/welcome).
 
