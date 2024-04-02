@@ -29,5 +29,5 @@ char *env_pathfinder(char **cmd) {
         }
     }
 
-    return (NULL);
+    return NULL;
 }
