@@ -2,13 +2,12 @@
 
 ## Repository Description
 
-This repository contains files to simulate simple shell implementation with a program is written in C language. It serves as a basic interactive shell that continuously reads commands from the user, executes them, and waits for their completion. It is made to carry out specific funtionality based on the C - Simple Shell project at [Atlas School](https://www.atlasschool.com/welcome).
+This repository contains files to simulate simple shell implementation with a program written in C language. It serves as a basic interactive shell that continuously reads commands from the user, executes them, and waits for their completion. It is made to carry out specific funtionality based on the C - Simple Shell project at [Atlas School](https://www.atlasschool.com/welcome).
 
 ## Project Requirements
 
 - Allowed editors: vi, vim, emacs.
-- All files will be compiled on Ubuntu 14.04 LTS.
-- Your C programs and functions will be compiled with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic.
+- All files will be compiled on Ubuntu 20.04 LTS using 'gcc' with the '-Wall -Werror -Wextra -pedantic -std=gnu89' flags.
 - All your files should end with a new line.
 - A README.md file, at the root of the folder of the project is mandatory.
 - Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl.
@@ -57,21 +56,21 @@ This repository contains files to simulate simple shell implementation with a pr
 
 ## Process Description
 
-1. Initialization
+1. ### Initialization
 
 The program begins by including necessary header files and defining constants like MAX_INPUT_SIZE and PROMPT. It also declares function prototypes for functions defined in main.h.
 
-2. Main Function (main())
+2. ### Main Function (main())
 
 The main() function is the entry point of the program. It initializes variables and checks if the shell is running in an interactive mode using isatty(STDIN_FILENO).
 
-3. Shell Loop: The program enters a while loop that continues indefinitely (while(1)).
+3. ### Shell Loop: The program enters a while loop that continues indefinitely (while(1)).
 
-4. Interactive Mode: Inside the loop, if the shell is running interactively, it prints a prompt (PROMPT) and flushes the standard output.
+4. ### Interactive Mode: Inside the loop, if the shell is running interactively, it prints a prompt (PROMPT) and flushes the standard output.
 
 _Note_: there are two ways of using the command interpreter:
 
-#### Interactive mode:
+##### Interactive mode
 
 ```
  $ ./hsh
@@ -82,7 +81,7 @@ hsh main.c shell.c
 $
 ```
 
-#### Non-interactive mode:
+##### Non-interactive mode
 
 ```
 $ echo "/bin/ls" | ./hsh
@@ -98,52 +97,51 @@ hsh main.c shell.c test_ls_2
 $
 ```
 
-5. Print Prompt and Read Input
+5. ### Print Prompt and Read Input
 
 Inside the loop, it prints the shell prompt (PROMPT) and reads input from the user using the read_line() function. The read_line() function dynamically allocates memory to store the input line using getline().
 
 ![getline](https://github.com/jennajones12/atlas-simple_shell/assets/116591011/0746f533-7a23-4f77-965c-e42c42088328)
 
-6. Check for End of File or Empty Input
+6. ### Check for End of File or Empty Input
 
 It checks if the input is NULL or if it has reached the end of the file (EOF). If so, and if it's an interactive session, it prints a newline and exits with either success or failure depending on the input.
 
-7. Tokenization
+7. ### Tokenization
 
 If the input line is not empty, it tokenizes the input line into separate arguments using the split_line() function. The split_line() function dynamically allocates memory for storing tokens and returns an array of pointers to tokens.
 
 ![splitline](https://github.com/jennajones12/atlas-simple_shell/assets/116591011/05314932-df6b-4dfb-8bd8-508eac846ee2)
 
-8. Check for Empty Arguments
+8. ### Check for Empty Arguments
 
 It checks if the first argument (command) is empty or null. If so, it continues to the next iteration of the loop without executing the command.
 
-9. Forking
+9. ### Forking
 
 The program forks a child process using fork(). 
 
-10. Child Process
+10. ### Child Process
 
-In the child process, it attempts to execute the command using execve().
-If execve() fails, it prints an error message using perror() and exits the child process with a failure status.
+In the child process, it attempts to execute the command using execve().If execve() fails, it prints an error message using perror() and exits the child process with a failure status.
 
-11. Parent Process
+11. ### Parent Process
 
 In the parent process (pid > 0), it waits for the child process to complete using waitpid().
 
-12. Error Handling:
+12. ### Error Handling:
 
 If fork() fails, it prints an error message using perror().
 
-13. Memory Deallocation
+13. ### Memory Deallocation
 
 After executing the command, it deallocates the dynamically allocated memory for the input line and the tokens.
 
-14. Memory Cleanup
+14. ### Memory Cleanup
 
 The allocated memory for the command and arguments is freed before looping back.
 
-15. Loop Continuation
+15. ### Loop Continuation
 
 The loop continues indefinitely, allowing the user to enter more commands.
 
