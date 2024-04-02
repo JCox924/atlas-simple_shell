@@ -32,11 +32,25 @@ int main(void)
 			}
 			exit(cmd == NULL ? EXIT_FAILURE : EXIT_SUCCESS);
 		}
+
+		if (cmd[0] == '\n' || cmd[0] == '\0')
+		{
+			free(cmd);
+			continue;
+		}
 		args = split_line(cmd);
+		if (args[0] == NULL || args[0][0] == '\0')
+		{
+			free(cmd);
+			free(args);
+			continue;
+		}
+
 		pid = fork();
 
 		if (pid == 0)
 		{
+			printf("attempting to execute: %s\n", args[0]);
 			if (execve(args[0], args, environ) == -1)
 			{
 				perror("execve");

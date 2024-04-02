@@ -10,7 +10,7 @@
 
 char** split_line(char *line)
 {
-	int buffer = 64, pos = 0;
+	int buffer = MAX_INPUT, pos = 0;
 	char **tokens = malloc(buffer * sizeof(char*));
 	char *token;
 
@@ -23,12 +23,11 @@ char** split_line(char *line)
 
 	while (token != NULL)
 	{
-		tokens[pos] = token;
-		pos++;
+		tokens[pos++] = token;
 	
 		if (pos >= buffer)
 		{
-			buffer += 64;
+			buffer += MAX_INPUT;
 			tokens = realloc(tokens, buffer * sizeof(char*));
 
 			if (!tokens)

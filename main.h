@@ -10,6 +10,8 @@
 #define MAX_INPUT 1024
 #define PROMPT "> "
 #define DELIMITERS " \n"
+#define STDIN_CONCAT(c) (fwrite(STDOUT_FILENO, c, _strlen(c)))
+
 char* read_line(void);
 char** split_line(char *line);
 
