@@ -168,7 +168,7 @@ Shell will be compiled this way:
 | [get_line.c](get_line.c)                 | File for a function that reads a line from the standard input ('stdin'); 'getline()' dynamically allocates the line's memory and updates the size in buffer. |
 | [simple_shell.c](simple_shell.c)         | File with main function for the simple shell. |
 | [splitter.c](splitter.c)                 | File with a function that splits a string into tokens based on specified delimiters and returns an array of pointers to these tokens. |
-| [pathfinder.c](pathfinder.c)             | File with function that resolves the full path to an executable command based on the 'PATH' environment variable and the provided command name. |
+| [pathfinder.c](pathfinder.c)             | File with a function that resolves the full path to an executable command based on the 'PATH' environment variable and the provided command name. |
 
 ## Authors
 [Joshua Cox](Joshua.Cox@atlasschool.com) |
