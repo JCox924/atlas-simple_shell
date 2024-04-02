@@ -2,19 +2,19 @@
 
 ## Repository Description
 
-This repository contains files to simulate simple shell implementation with a program written in C language. It serves as a basic interactive shell that continuously reads commands from the user, executes them, and waits for their completion. It is made to carry out specific funtionality based on the C - Simple Shell project at [Atlas School](https://www.atlasschool.com/welcome).
+This repository contains files to simulate implementation for a simple shell with a program written in C language. It serves as a basic interactive shell that continuously reads commands from the user, executes them, and waits for their completion. It is made to carry out specific funtionality based on the ### _C - Simple Shell_ project at [Atlas School](https://www.atlasschool.com/welcome).
 
 ## Project Requirements
 
 - Allowed editors: vi, vim, emacs.
 - All files will be compiled on Ubuntu 20.04 LTS using 'gcc' with the '-Wall -Werror -Wextra -pedantic -std=gnu89' flags.
 - All files should end with a new line.
-- A README.md file is mandatory at the root of the folder of the project.
-- Code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl.
+- Mandatory README.md file at the root of the folder of the project.
+- Betty compliant code; checked using 'betty-style.pl' and 'betty-doc.pl'.
 - Shell should not have any memory leaks.
 - No more than 5 functions per file.
 - Header files should be include guarded.
-- Use system calls only when needed.
+- System calls only used when needed.
 
 ## Allowed Functions and System Calls
 
