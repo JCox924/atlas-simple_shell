@@ -14,5 +14,7 @@
 
 char* read_line(void);
 char** split_line(char *line);
+char env_pathfinder(void);
+char **container(char *str, char dlim);
 
 #endif
