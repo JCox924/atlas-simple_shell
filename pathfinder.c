@@ -1,46 +1,24 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-/**
-*env_pathfinder - returns path to native commands (fun_fact: pathfinder is one of the toughest Army schools)
-*
-*
-*Return: path for command inputted
-*/
+#define MAX_INPUT 256
 
-char env_pathfinder(void)
-{
-	int pos = 0;
-	char *path = getenv("PATH");
-	char **path_az, *tgt;
 
-	if (strncmp(cmd[0], "./", 2) == 0 || cmd[0][0] == "/" || strncmp(cmd[0], "../". 3))
-	{
-		if (access(cmd[0], F_OK) == 0)
-		{
-			return (strdup(cmd[0]);
-		}
-	}
+char *env_pathfinder(char **cmd) {
+    char *path = getenv("PATH");
 
-	if (!path)
-	{
-		return (NULL);
-	}
-	path_az = container(path, ':');
+    if (strncmp(cmd[0], "./", 2) == 0 || cmd[0][0] == '/' || strncmp(cmd[0], "../", 3) == 0) {
+        if (access(cmd[0], F_OK) == 0) {
+            return strdup(cmd[0]);
+        }
+    }
 
-	for (;path_dir[pos]; pos++)
-	{
-		tgt = malloc(MAX_INPUT);
-		strcpy(tgt, path_dir[i]);
-		strcat(tgt, "/");
-		strcat(tgt, cmd[0]);
+    if (!path) {
+        return NULL;
+    }
 
-		if (access(tgt, F_OK) == 0)
-		{
-			free_array(path_az);
-			return (tgt);
-		}
-		free(tgt);
-	}
-	free_array(path_az);
-	return (NULL);
+    return NULL;
 }
+
