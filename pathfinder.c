@@ -10,7 +10,7 @@
 char env_pathfinder(void)
 {
 	int pos = 0;
-	char *path = get_env("PATH");
+	char *path = getenv("PATH");
 	char **path_az, *tgt;
 
 	if (strncmp(cmd[0], "./", 2) == 0 || cmd[0][0] == "/" || strncmp(cmd[0], "../". 3))
