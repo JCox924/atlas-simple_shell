@@ -72,9 +72,9 @@ The program enters a 'while' loop that continues indefinitely ('while(1)').
 
 Inside the loop, if the shell is running interactively, it prints a prompt ('PROMPT') and flushes the standard output.
 
-_Note_: 
+_Note_-
 
-There are two ways of using the command interpreter
+There are two ways of using the command interpreter:
 
 ##### Interactive mode
 
@@ -103,7 +103,7 @@ hsh main.c shell.c test_ls_2
 $
 ```
 
-### Print Prompt and Read Input
+### Print Prompt & Read Input
 
 Inside the loop, it prints the shell prompt ('PROMPT') and reads input from the user using the 'read_line()' function. The 'read_line()' function dynamically allocates memory to store the input line using 'getline()'.
 
@@ -111,7 +111,7 @@ Inside the loop, it prints the shell prompt ('PROMPT') and reads input from the 
 
 ### Check for End of File or Empty Input
 
-Checks if the input is NULL or if it has reached the end of the file ('EOF'). If so, and if it's an interactive session, it prints a newline and exits with either 'success' or 'failure' depending on the input.
+Checks if the input is 'NULL' or if it has reached the end of the file ('EOF'). If so, and it's an interactive session, it prints a newline and exits with either 'success' or 'failure', depending on the input.
 
 ### Tokenization
 
